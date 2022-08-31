@@ -42,7 +42,7 @@ namespace PROJETO_SISTEMA_DE_VENDAS__MARMORARIA_BELLAS_PEDRAS_._2_ConexaoSQL
 
                 this.mensagem = "Cadastrado com Sucesso!";
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 this.mensagem = "Erro ao tentar Conectar com o bando de Dados";
             }

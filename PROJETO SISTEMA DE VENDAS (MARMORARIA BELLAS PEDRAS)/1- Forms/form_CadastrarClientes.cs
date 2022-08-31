@@ -51,22 +51,6 @@ namespace PROJETO_SISTEMA_DE_VENDAS__MARMORARIA_BELLAS_PEDRAS_._1__Forms
             ValidarDigitos.ApenasLetrasBackspace(e);
         }
 
-        //private void txtCPF_CNPJ_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (txtCPF_CNPJ.PlaceholderText == "CPF /CNPJ")
-        //    {
-        //        txtCPF_CNPJ.PlaceholderText = "";
-        //    }
-        //    else if (txtCPF_CNPJ.Text == "")
-        //    {
-        //        txtCPF_CNPJ.PlaceholderText = "CPF /CNPJ";
-        //    }
-
-        //    ValidarDigitos.ApenasNumerosBackspace(e);
-        //    //ValidarDigitos.PadraoDocumentoCPFTextbox(sender, e);
-
-        //}
-
         private void txtTelefone_KeyPress(object sender, KeyPressEventArgs e)
         {
             ValidarDigitos.ApenasNumerosBackspace(e);
