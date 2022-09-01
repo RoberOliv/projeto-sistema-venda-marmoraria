@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PROJETO_SISTEMA_DE_VENDAS__MARMORARIA_BELLAS_PEDRAS_._2_ConexaoBancoDados;
 using PROJETO_SISTEMA_DE_VENDAS__MARMORARIA_BELLAS_PEDRAS_._2_ConexaoSQL;
 
 namespace PROJETO_SISTEMA_DE_VENDAS__MARMORARIA_BELLAS_PEDRAS_._1__Forms
@@ -61,6 +62,19 @@ namespace PROJETO_SISTEMA_DE_VENDAS__MARMORARIA_BELLAS_PEDRAS_._1__Forms
             }
         }
 
+        private void CarregarTabelaServicos()
+        {
+            using (SqlConnection cn = new SqlConnection(StrConnection))
+            {
+                var sqlQuery = "SELECT  sv_id AS ID,sv_dadoscompracliente AS CLIENTE,sv_dadosmateriais AS MATERIAIS,sv_nomeservico AS TIPO,sv_quantidade AS Qdt,sv_comprimento AS COMPRIMENTO,sv_largura AS LARGURA,sv_descricao AS DESCRIÇAO  FROM tb_Servicos ORDER BY sv_id DESC";
+
+                SqlDataAdapter da = new SqlDataAdapter(sqlQuery, cn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                gdvExibirListaServicos.DataSource = dt;
+            }
+        }
+
         private void form_CadastrarServicos_Load(object sender, EventArgs e)
         {
             foreach (ClienteMaterialEstrutura listaNomes in BuscarVariosClientes())
@@ -69,6 +83,7 @@ namespace PROJETO_SISTEMA_DE_VENDAS__MARMORARIA_BELLAS_PEDRAS_._1__Forms
             }
 
             CarregarVariosMateriais();
+            CarregarTabelaServicos();
         }
 
         private List<ClienteMaterialEstrutura> BuscarVariosMateriais()
@@ -99,6 +114,13 @@ namespace PROJETO_SISTEMA_DE_VENDAS__MARMORARIA_BELLAS_PEDRAS_._1__Forms
             {
                 cmbNomeMateriais.Items.Add(listaNomes.NomeMaterial + " - " + "R$ " + listaNomes.ValorMaterial + " - " + listaNomes.TipoMaterial);
             }
+        }
+
+        private void btnCadastrarServico_Click(object sender, EventArgs e)
+        {
+            CadastroServicos cad = new CadastroServicos(cmbNomeClientes.Text, cmbNomeMateriais.Text, cmbNomeServicos.Text, txtQuantidade.Text, txtComprimento.Text, txtLargura.Text, rtextDescricaoServico.Text);
+            MessageBox.Show(cad.mensagem);
+            CarregarTabelaServicos();
         }
     }
 }

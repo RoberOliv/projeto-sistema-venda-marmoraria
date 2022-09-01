@@ -252,6 +252,7 @@ namespace PROJETO_SISTEMA_DE_VENDAS__MARMORARIA_BELLAS_PEDRAS_._1__Forms
             this.btnCadastrarServico.TextMarginLeft = 0;
             this.btnCadastrarServico.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnCadastrarServico.UseDefaultRadiusAndThickness = true;
+            this.btnCadastrarServico.Click += new System.EventHandler(this.btnCadastrarServico_Click);
             // 
             // cmbNomeServicos
             // 
